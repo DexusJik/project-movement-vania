@@ -1,0 +1,16 @@
+# Godot-specific ignores
+.godot/
+*.import
+export_presets.cfg
+
+# OS-specific ignores
+.DS_Store
+Thumbs.db
+
+# IDE ignores
+.vscode/
+.idea/
+
+# Logs and temp files
+*.log
+.env
