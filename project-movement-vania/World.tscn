@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" path="res://Player.tscn" id="1_player"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(3000, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ceiling"]
+size = Vector2(3000, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
+size = Vector2(40, 1000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_box"]
+size = Vector2(100, 100)
+
+[node name="World" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(1500, 400)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(1500, 1000)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="Visual" type="ColorRect" parent="Floor"]
+offset_left = -1500.0
+offset_top = -20.0
+offset_right = 1500.0
+offset_bottom = 20.0
+color = Color(1, 1, 1, 1)
+
+[node name="Ceiling" type="StaticBody2D" parent="."]
+position = Vector2(1500, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
+shape = SubResource("RectangleShape2D_ceiling")
+
+[node name="Visual" type="ColorRect" parent="Ceiling"]
+offset_left = -1500.0
+offset_top = -20.0
+offset_right = 1500.0
+offset_bottom = 20.0
+color = Color(1, 1, 1, 1)
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+position = Vector2(0, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="Visual" type="ColorRect" parent="LeftWall"]
+offset_left = -20.0
+offset_top = -500.0
+offset_right = 20.0
+offset_bottom = 500.0
+color = Color(1, 1, 1, 1)
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2(3000, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="Visual" type="ColorRect" parent="RightWall"]
+offset_left = -20.0
+offset_top = -500.0
+offset_right = 20.0
+offset_bottom = 500.0
+color = Color(1, 1, 1, 1)
+
+[node name="Box" type="StaticBody2D" parent="."]
+position = Vector2(1700, 930)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
+shape = SubResource("RectangleShape2D_box")
+
+[node name="Visual" type="ColorRect" parent="Box"]
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+color = Color(0.7, 0.4, 0.2, 1)

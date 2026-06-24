@@ -2,11 +2,11 @@
 
 Welcome to the engineering hub for **Project MovementVania**, a study in precise, snappy, and morph-based kinematic movement.
 
-## 🛠 Current Status: Migration Phase
-The project is currently transitioning from a JavaScript/Matter.js prototype to the **Godot 4.x Engine** to achieve professional-grade physics stability and a more robust development workflow.
+## 🛠 Current Status: Development Phase
+The project is being built using the **Godot 4.x Engine**, focusing on professional-grade physics stability and a robust, scalable development workflow.
 
-**Phase:** `Implementation (Godot)`
-**Focus:** Porting Kinematic Locomotion & Morphing Systems
+**Phase:** `Core Implementation`
+**Focus:** Kinematic Locomotion & Morphing Systems
 
 ---
 
@@ -22,13 +22,13 @@ MovementVania is built around three core mechanical pillars:
 ## 📂 Repository Structure
 - `/project-movement-vania`: The core Godot 4 project source.
 - `GAME_DESIGN.md`: The "Single Source of Truth" containing all mathematical specifications, dimensions, and state logic.
-- `CHANGELOG.md`: A chronological record of iterations and pivots.
+- `CHANGELOG.md`: A chronological record of iterations and progress.
 
 ---
 
 ## 📖 Documentation
 - [Game Design Specification](./GAME_DESIGN.md) - Detailed breakdown of movement math and morph states.
-- [Changelog](./CHANGELOG.md) - The journey from JS prototype to Godot.
+- [Changelog](./CHANGELOG.md) - Development history and versioning.
 
 ---
 
