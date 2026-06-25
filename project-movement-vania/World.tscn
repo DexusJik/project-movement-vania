@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="PackedScene" path="res://Player.tscn" id="1_player"]
 
@@ -13,6 +13,9 @@ size = Vector2(40, 1000)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_box"]
 size = Vector2(100, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform"]
+size = Vector2(200, 40)
 
 [node name="World" type="Node2D"]
 
@@ -71,15 +74,51 @@ offset_right = 20.0
 offset_bottom = 500.0
 color = Color(1, 1, 1, 1)
 
-[node name="Box" type="StaticBody2D" parent="."]
-position = Vector2(1700, 930)
+[node name="Box1" type="StaticBody2D" parent="."]
+position = Vector2(1200, 930)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box1"]
 shape = SubResource("RectangleShape2D_box")
 
-[node name="Visual" type="ColorRect" parent="Box"]
+[node name="Visual" type="ColorRect" parent="Box1"]
 offset_left = -50.0
 offset_top = -50.0
 offset_right = 50.0
 offset_bottom = 50.0
 color = Color(0.7, 0.4, 0.2, 1)
+
+[node name="Box2" type="StaticBody2D" parent="."]
+position = Vector2(1450, 930)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box2"]
+shape = SubResource("RectangleShape2D_box")
+
+[node name="Visual" type="ColorRect" parent="Box2"]
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+color = Color(0.7, 0.4, 0.2, 1)
+
+[node name="Ramp" type="StaticBody2D" parent="."]
+position = Vector2(1800, 980)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ramp"]
+polygon = PackedVector2Array(0, 0, 200, 0, 0, -200)
+
+[node name="Visual" type="Polygon2D" parent="Ramp"]
+polygon = PackedVector2Array(0, 0, 200, 0, 0, -200)
+color = Color(1, 1, 1, 1)
+
+[node name="UpperPlatform" type="StaticBody2D" parent="."]
+position = Vector2(2100, 800)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperPlatform"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="Visual" type="ColorRect" parent="UpperPlatform"]
+offset_left = -100.0
+offset_top = -20.0
+offset_right = 100.0
+offset_bottom = 20.0
+color = Color(1, 1, 1, 1)

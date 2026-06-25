@@ -13,8 +13,9 @@ MovementVania is a kinematic-driven platformer focusing on fluid, weighted movem
 | Object | State | Width | Height | Notes |
 | :--- | :--- | :--- | :--- | :--- |
 | **Player** | Standing | 40 | 180 | Base state |
+| **Player** | Crouch | 40 | 90 | Low profile, moderate slope slide |
 | **Player** | Superman | 180 | 40 | Horizontal glide state |
-| **Player** | Ball | 60 | 60 | Compact state |
+| **Player** | Ball | 60 | 60 | Compact state, maximum slope slide |
 | **Crate** | Default | 100 | 100 | Standard environment object |
 
 ### World Layout
@@ -30,12 +31,19 @@ MovementVania is a kinematic-driven platformer focusing on fluid, weighted movem
 - **Rotation Lock**: Player is strictly prohibited from rotating (`setAngle(0)` every frame) to prevent toppling.
 
 ### Morphing System
-- **Trigger**: Controlled by the Right Stick (RS).
+- **Trigger**: Controlled by the Sticks.
+    - **LS Down**: Transition to Crouch.
     - **RS Up**: Transition to Superman.
     - **RS Down**: Transition to Ball.
-    - **RS Neutral**: Return to Normal.
+    - **Neutral**: Return to Normal.
 - **Ground Pinning**: During morphs, the body center is shifted to keep the bottom edge pinned to the ground, preventing clipping or "popping."
 - **Safety Check**: Superman morph is blocked if the 180-unit width expansion would overlap with non-static objects.
+- **Slope Dynamics**:
+    - `Normal`: Base slope friction.
+    - `Crouch`: Reduced friction, moderate slide force.
+    - `Ball`: Minimal friction, maximum slide force (projectile-like).
+    - `Superman`: High friction, minimal slide force (punishing drag).
+    - **Slope Alignment**: In Superman state, the character's visual/collision orientation should align with the slope angle for a natural look. This must be handled as a visual/temporary rotation that resets instantly upon exiting the state to maintain the strict Rotation Lock.
 
 ### Gliding Physics (Superman State)
 - **Glide Gravity**: significantly lower than standard gravity.
